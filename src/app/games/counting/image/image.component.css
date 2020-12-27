@@ -1,0 +1,9 @@
+.imagesize{
+  height: 50%;
+  width: 50%;
+}
+
+.correctimage {
+  border: solid 5px #ccc;
+  border-color: rgb(6, 240, 6) ;
+}

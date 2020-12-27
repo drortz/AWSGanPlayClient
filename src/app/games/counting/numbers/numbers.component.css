@@ -1,0 +1,41 @@
+.dynbamicfontsize{
+  font-size: 110px;
+  height: 150px;
+  width: 150px;
+  border-style: inset;
+}
+
+.appear-as-disable{
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 994px) {
+  .dynbamicfontsize{
+    font-size: 70px;
+    height: 100px;
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .dynbamicfontsize{
+    font-size: 40px;
+    font-weight: bold;
+    /* text-indent: -0.4em; */
+    height: 60px;
+    width: 60px;
+  }
+
+  @media screen and (max-width: 590px) {
+    .dynbamicfontsize{
+      font-size: 30px;
+      font-weight: bold;
+      /* text-indent: -0.4em; */
+      height: 50px;
+      width: 50px;
+      /* border-color: white; */
+    }
+  }
+}
+

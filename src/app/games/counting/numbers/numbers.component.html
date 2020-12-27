@@ -1,0 +1,39 @@
+<div [className]="isAnswered ? 'section bg-light appear-as-disable' : 'section bg-light' ">
+    <div class="container pt-3 pb-2" dir="rtl" >
+        <div class="row justify-content-center ">
+            <div class="col-2  mb-3" >
+                <button mat-fab [color]="this.isAnswered && this.isCorrectNumberPerInputNumber('1') ? 'warn' : 'primary'" class="dynbamicfontsize" (click)="onNumberClick('1')" >1</button>
+            </div>
+            <div class="col-2  mb-3" >
+                <button mat-fab [color]="this.isAnswered && this.isCorrectNumberPerInputNumber('2') ? 'warn' : 'primary'" class="dynbamicfontsize" (click)="onNumberClick('2')" >2</button>
+            </div>
+            <div class="col-2  mb-3" >
+                <button mat-fab [color]="this.isAnswered && this.isCorrectNumberPerInputNumber('3') ? 'warn' : 'primary'" class="dynbamicfontsize" (click)="onNumberClick('3')">3</button>
+            </div>
+            <div class="col-2  mb-3" >
+                <button mat-fab [color]="this.isAnswered && this.isCorrectNumberPerInputNumber('4') ? 'warn' : 'primary'" class="dynbamicfontsize" (click)="onNumberClick('4')">4</button>
+            </div>
+            <div class="col-2  mb-3" >
+                <button mat-fab [color]="this.isAnswered && this.isCorrectNumberPerInputNumber('5') ? 'warn' : 'primary'"  class="dynbamicfontsize" (click)="onNumberClick('5')">5</button>
+            </div>
+        </div>
+        <div class="row justify-content-center ">
+            <div class="col-2 mb-3">
+                <button mat-fab [color]="this.isAnswered && this.isCorrectNumberPerInputNumber('6') ? 'warn' : 'primary'" class="dynbamicfontsize" (click)="onNumberClick('6')">6</button>
+            </div>
+            <div class="col-2 mb-3">
+                <button mat-fab [color]="this.isAnswered && this.isCorrectNumberPerInputNumber('7') ? 'warn' : 'primary'" class="dynbamicfontsize" (click)="onNumberClick('7')">7</button>
+            </div>
+            <div class="col-2 mb-3">
+                <button mat-fab [color]="this.isAnswered && this.isCorrectNumberPerInputNumber('8') ? 'warn' : 'primary'" class="dynbamicfontsize" (click)="onNumberClick('8')">8</button>
+            </div>
+            <div class="col-2 mb-3">
+                <button mat-fab [color]="this.isAnswered && this.isCorrectNumberPerInputNumber('9') ? 'warn' : 'primary'" class="dynbamicfontsize" (click)="onNumberClick('9')">9</button>
+            </div>
+            <div class="col-2 mb-3">
+                <button mat-fab [color]="this.isAnswered && this.isCorrectNumberPerInputNumber('10') ? 'warn' : 'primary'" class="dynbamicfontsize" (click)="onNumberClick('10')">10</button>
+            </div>
+          </div>
+      </div>
+
+</div>

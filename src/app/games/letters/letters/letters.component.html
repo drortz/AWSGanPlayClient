@@ -1,0 +1,66 @@
+<div *ngIf="isLoaded" class="container pt-2 pb-2 mb-3">
+    <div class="row " dir='rtl'>
+      <div class="col-2">
+          <p class="text-left">
+            <!-- <button (click)="loadPrevPage()" id="backbutton" type="button " class="btn btn-warning" [disabled]="isItTheFirstPic()">הקודם</button> -->
+            <img id="backImg" src="../../../assets/images/back.png" (click)="loadPrevPage()" [className]="!this.isItTheFirstPic() ? 'rounded float-left nextback' : 'rounded float-left nextback appear-as-disable'" alt="Responsive image">
+          </p>
+      </div>
+      <div class="col-8">
+          <em><p class="text-center h3" style="font-size: 5vw;">אות פותחת ואות סוגרת</p></em>
+      </div>
+      <div class="col-2">
+          <p class="text-right">
+              <img id="nextImg" src="../../../assets/images/next.png" (click)="loadNextPage()" [className]="!this.isItTheLastPic() ? 'rounded float-right nextback' : 'rounded float-right nextback appear-as-disable'" alt="Responsive image">
+            <!-- <button (click)="loadNextPage()" id="nextbutton" type="button" class="btn btn-warning" [disabled]="isItTheLastPic()">הבא</button> -->
+          </p>
+      </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center" dir='rtl'>
+        <div *ngIf="isLoaded" class="col-3 align-self-center px-4">
+          <p>אות פותחת</p>
+          <div cdkDropList id="firstLetter" cdkDropListOrientation="horizontal" class="example-list" [cdkDropListEnterPredicate]="dynamicPredicateFirstLetter" [cdkDropListData]="firstLetter" (cdkDropListDropped)="drop($event)">
+              <div [className]="isFirstLetterCorrect || this.isAnswered ? 'example-box-correct' : 'example-box'" *ngFor="let letter of firstLetter" cdkDrag>{{letter}}</div>
+          </div>
+        </div>
+        <div class="col-6 align-middle">
+
+        <img src={{lettersDataToDisplay?.imageUrl}} (load)="onImgLoad()" [className]="this.isAnswered ? 'rounded mx-auto d-block img-fluid shadow correctimage orig' : 'rounded mx-auto d-block img-fluid shadow orig'" alt="Responsive image">
+
+
+
+          <!-- <app-image  [imageUrl]="mockDataToDisplay.imageUrl"></app-image> -->
+        </div>
+        <div *ngIf="isLoaded" class="col-3 align-self-center px-4">
+            <p>אות סוגרת</p>
+            <div cdkDropList id="lastLetter" cdkDropListOrientation="horizontal" class="example-list" [cdkDropListEnterPredicate]="dynamicPredicateLastLetter" [cdkDropListData]="lastLetter" (cdkDropListDropped)="drop($event)">
+                <div [className]="isLastLetterCorrect || this.isAnswered ? 'example-box-correct' : 'example-box'" *ngFor="let letter of lastLetter" cdkDrag>{{letter}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="isLoaded" [className]="this.isAnswered ? 'container mt-5 pt-3 pb-3 appear-as-disable' : 'container mt-5 pt-3 pb-3'" style="background: rgb(153, 187, 242)">
+    <div class="example-container">
+        <div id="src1" cdkDropList cdkDropListOrientation="horizontal" [cdkDropListConnectedTo]="['firstLetter','lastLetter']" [cdkDropListData]="letters" [cdkDropListEnterPredicate]="noReturnPredicate" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let letter of letters" cdkDrag>{{letter}}</div>
+        </div>
+    </div>
+    <div class="example-container">
+        <div id="src2" cdkDropList cdkDropListOrientation="horizontal" [cdkDropListConnectedTo]="['firstLetter','lastLetter']" [cdkDropListData]="letters2" [cdkDropListEnterPredicate]="noReturnPredicate" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let letter of letters2" cdkDrag>{{letter}}</div>
+        </div>
+    </div>
+    <div class="example-container">
+        <div id="src3" cdkDropList cdkDropListOrientation="horizontal" [cdkDropListConnectedTo]="['firstLetter','lastLetter']" [cdkDropListData]="letters3" [cdkDropListEnterPredicate]="noReturnPredicate" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let letter of letters3" cdkDrag>{{letter}}</div>
+        </div>
+    </div>
+</div>
+
+<app-answer-feedback></app-answer-feedback>
+<app-load-spinner></app-load-spinner>

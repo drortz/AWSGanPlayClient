@@ -1,0 +1,34 @@
+
+
+<div *ngIf="isLoaded" class="container pt-2 pb-2 mb-3">
+  <div class="row " dir='rtl'>
+    <div class="col-2">
+        <p class="text-left">
+          <!-- <button (click)="loadPrevPage()" id="backbutton" type="button " class="btn btn-warning" [disabled]="isItTheFirstPic()">הקודם</button> -->
+          <img id="backImg" src="../../../assets/images/back.png" (click)="loadPrevPage()" [className]="!this.isItTheFirstPic() ? 'rounded float-left nextback' : 'rounded float-left nextback appear-as-disable'" alt="Responsive image">
+        </p>
+    </div>
+    <div class="col-8">
+      <em><p class="text-center h3" style="font-size: 6vw;">ספירה ומניה</p></em>
+    </div>
+    <div class="col-2">
+        <p class="text-right">
+            <img id="nextImg" src="../../../assets/images/next.png" (click)="loadNextPage()" [className]="!this.isItTheLastPic() ? 'rounded float-right nextback' : 'rounded float-right nextback appear-as-disable'" alt="Responsive image">
+          <!-- <button (click)="loadNextPage()" id="nextbutton" type="button" class="btn btn-warning" [disabled]="isItTheLastPic()">הבא</button> -->
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="isLoaded" class="container" dir="rtl">
+  <div class="row justify-content-center">
+    <h4>כמה {{countingDataToDisplay?.subject}} יש בתמונה ?</h4>
+  </div>
+</div>
+
+<app-image  (loaded)="imageLoaded($event)" [imageUrl]="countingDataToDisplay?.imageUrl" [isAnswered]="isAnswered"></app-image>
+<app-numbers *ngIf="isLoaded" (selectedNumber)="onSelectedNumber($event)" [isAnswered]="isAnswered" [answer]="this.countingDataToDisplay.answer" ></app-numbers>
+<app-answer-feedback *ngIf="isLoaded" ></app-answer-feedback>
+<app-load-spinner></app-load-spinner>
+
