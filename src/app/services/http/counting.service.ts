@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,7 @@ export class CountingService {
 
   constructor(private httpClient: HttpClient ) { }
 
-  url = 'https://ganplay.appspot.com/CountingData';
-  // url = 'http://localhost:8080/CountingData';
-
+  url = environment.url + 'CountingData';
 
   getCountingData() {
     return this.httpClient.get(this.url);
