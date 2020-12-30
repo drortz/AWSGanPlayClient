@@ -1,0 +1,36 @@
+
+<div dir ="rtl" class="jumbotron">
+  <div class="container">
+    <div class="row">
+        <h1 style="margin-left: 5%;" class="display-4">תרגילי חשבון</h1>
+        <img src="../../../../assets/images/AdditionSubtraction.png" class="img-fluid imagesizing">
+    </div>
+    <hr class="my-4">
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="../../../../assets/images/PlusMinus.png" class="card-img-top" style="background-color: bisque;">
+          <div class="card-body text-center">
+            <h5 class="card-title">חיבור וחיסור</h5>
+            <mat-button-toggle-group #group="matButtonToggleGroup" name="level" value="/math/addition-subtraction/level-1/1">
+              <mat-button-toggle value="/math/addition-subtraction/level-1/1">קל</mat-button-toggle>
+              <mat-button-toggle value="/math/addition-subtraction/level-2/1">בינוני</mat-button-toggle>
+              <mat-button-toggle value="/math/addition-subtraction/level-3/1">קשה</mat-button-toggle>
+            </mat-button-toggle-group>
+            <tr></tr>
+            <!-- Path defined in router: {path: 'math/:game/:level/:id', component: MathComponent}, -->
+            <a routerLink='{{group.value}}' style="margin-top: 20%;" class="btn btn-success" role="button">התחלה</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <!-- <img src="../../../../assets/images/AdditionSubtraction.png" class="img-fluid imagesizing"> -->
+      </div>
+        
+    </div>
+
+    <hr class="my-4">
+
+  </div>
+</div>
+
