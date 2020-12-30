@@ -16,8 +16,11 @@ import { LettersComponent } from './games/letters/letters/letters.component';
 import { LettersIntroComponent } from './games/letters/letters-intro/letters-intro.component';
 import { LettersBarComponent } from './games/letters/letters-bar/letters-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatButtonToggleModule } from '@angular/material';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MathComponent } from './games/Math/Math.component';
+import { MathIntroComponent } from './games/Math/math-intro/math-intro.component';
+import { MathCountingObjectsComponent } from './games/Math/math-counting-objects/math-counting-objects.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     CountingIntroComponent,
     LettersComponent,
     LettersIntroComponent,
-    LettersBarComponent
+    LettersBarComponent,
+    MathComponent,
+    MathIntroComponent,
+    MathCountingObjectsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +46,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     DragDropModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatButtonToggleModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

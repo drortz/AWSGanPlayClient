@@ -1,0 +1,43 @@
+.appear-as-disable{
+    pointer-events: none;
+    opacity: 0.2;
+  }
+  
+  .nextback{
+    width: 90px;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+  
+  .correctimage {
+    border: solid 5px #ccc;
+    border-color: rgb(6, 240, 6) ;
+  }
+  
+  .nextback:hover{
+    /* transform: scale(1.2); */
+    /* filter: blur(5px); */
+  }
+  
+  .nextback:active{
+    /* filter: blur(5px); */
+    transform: scale(1.3);
+  }
+
+  img {
+    max-height: 400px;
+    height: auto;
+    width: auto\9; /* ie8 */
+  }
+  
+  @media screen and (max-width: 994px) {
+    .nextback{
+      width: 70px;
+    }
+  }
+  
+  @media screen and (max-width: 760px) {
+    .nextback{
+      width: 45px;
+    }
+  }

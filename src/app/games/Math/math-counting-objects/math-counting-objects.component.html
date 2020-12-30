@@ -1,0 +1,47 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-5">
+      <table class="table table-borderless">
+        <tr>
+          <td *ngIf="this.leftNumber >=1"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+          <td *ngIf="this.leftNumber >=2"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+          <td *ngIf="this.leftNumber >=3"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+        </tr>
+        <tr>
+          <td *ngIf="this.leftNumber >=4"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+          <td *ngIf="this.leftNumber >=5"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+          <td *ngIf="this.leftNumber >=6"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+        </tr>
+        <tr>
+          <td *ngIf="this.leftNumber >=7"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+          <td *ngIf="this.leftNumber >=8"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+          <td *ngIf="this.leftNumber >=9"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-2 text-center">
+      <img *ngIf="this.operator==='minus'" src="../../../../assets/images/MinusSign.png" style="height: 50%; width: 50%;" class="img-fluid">
+      <img *ngIf="this.operator==='plus'" src="../../../../assets/images/PlusSign.png" style="height: 50%; width: 50%;" class="img-fluid">
+    </div>
+    <div class="col-5">
+      <table class="table table-borderless">
+        <tr>
+          <td *ngIf="this.rightNumber >=1"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+          <td *ngIf="this.rightNumber >=2"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+          <td *ngIf="this.rightNumber >=3"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+        </tr>
+        <tr>
+          <td *ngIf="this.rightNumber >=4"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+          <td *ngIf="this.rightNumber >=5"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+          <td *ngIf="this.rightNumber >=6"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+        </tr>
+        <tr>
+          <td *ngIf="this.rightNumber >=7"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+          <td *ngIf="this.rightNumber >=8"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+          <td *ngIf="this.rightNumber >=9"><img style="width: 20%; height: auto;" src="../../../../assets/images/dot.png" class="img-fluid"></td>
+        </tr>
+      </table>
+    </div>
+    
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div *ngIf="isLoaded" class="container pt-2 pb-2 mb-3">
+  <div class="row " dir='rtl'>
+    <div class="col-2">
+        <p class="text-left">
+          <!-- <button (click)="loadPrevPage()" id="backbutton" type="button " class="btn btn-warning" [disabled]="isItTheFirstPic()">הקודם</button> -->
+          <img id="backImg" src="../../../assets/images/back.png" (click)="loadPrevPage()" [className]="!this.isItTheFirstPic() ? 'rounded float-left nextback' : 'rounded float-left nextback appear-as-disable'" alt="Responsive image">
+        </p>
+    </div>
+    <div class="col-8">
+        <em><p class="text-center h3" style="font-size: 5vw;">{{this.gameEngToHeb.get(this.game)}}</p></em>
+    </div>
+    <div class="col-2">
+        <p class="text-right">
+            <img id="nextImg" src="../../../assets/images/next.png" (click)="loadNextPage()" [className]="!this.isItTheLastPic() ? 'rounded float-right nextback' : 'rounded float-right nextback appear-as-disable'" alt="Responsive image">
+          <!-- <button (click)="loadNextPage()" id="nextbutton" type="button" class="btn btn-warning" [disabled]="isItTheLastPic()">הבא</button> -->
+        </p>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row justify-content-center" dir='ltr' style="background-color: lightskyblue">
+    <h1>{{this.mathGameDataToDisplay?.mathQuestion}}</h1>
+  </div>
+  
+  <app-math-counting-objects *ngIf="this.level === 'level-1' && this.game === 'addition-subtraction'"
+      [leftNumber]="this.leftNumber" [rightNumbet]="this.rightNumber" [operator]="this.operator">
+  </app-math-counting-objects>
+
+  <div class="row mt-3">
+    <div *ngFor="let choice of this.mathGameDataToDisplay?.multipleChoise" class = col>
+      <button style="font-size : 60px; width: 100%; height: 100px;" 
+              type="button" [className]="(choice === this.mathGameDataToDisplay.correctAnswer && this.isAnswered) ? 'btn btn-success btn-lg active' : 'btn btn-info btn-lg' " [disabled]="this.isAnswered" (click)="onClickAnswer(choice)">{{choice}}
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<app-load-spinner></app-load-spinner>
+<app-answer-feedback></app-answer-feedback>
