@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MathService } from '../../services/http/math.service'
 import { LoadSpinnerService } from './../../services/load-spinner.service';
+import { AnswerFeedbackService } from './../../services/answer-feedback.service';
 
 @Component({
   selector: 'app-Math',
@@ -19,6 +20,10 @@ export class MathComponent implements OnInit {
   gameEngToHeb = new Map();
   isLoaded = false;
 
+  leftNumber: number = 0;
+  rightNumber: number = 0;
+  operator: string = 'plus';
+
   mathGameData: {mathQuestions: {mathQuestion: string, 
     multipleChoise: string[], 
     correctAnswer: string, 
@@ -29,10 +34,19 @@ export class MathComponent implements OnInit {
     correctAnswer: string, 
     id: string};
 
+  mathGameDataCorrect: {
+    mathQuestion: string;
+    multipleChoise: string[];
+    correctAnswer: string;
+    id: string;}[] = [];
+
+    isAnswered: boolean = false;
+
   constructor(
     public router: Router,
     private mathService: MathService,
     private loadSpinner: LoadSpinnerService,
+    private answerFeedback: AnswerFeedbackService,
     private activeRoute: ActivatedRoute
     ) { 
       activeRoute.params.subscribe(
@@ -84,8 +98,47 @@ export class MathComponent implements OnInit {
       this.mathGameDataToDisplay = this.mathGameData.mathQuestions[this.mathGameData.mathQuestions.length - 1];
     }
 
+    this.splitQuestion();
+    if(this.isAnsweredById(this.mathGameDataToDisplay.id)) {
+      this.isAnswered = true;
+    } else {
+      this.isAnswered = false;
+    }
     this.isLoaded = true;
     this.loadSpinner.isDisplayLoading(false);
+  }
+
+  splitQuestion() {
+    let operatorToWord = new Map();
+    operatorToWord.set('+', 'plus');
+    operatorToWord.set('-', 'minus');
+    operatorToWord.set('X', 'multiplication');
+    let splitValues: string[] = this.mathGameDataToDisplay.mathQuestion.split("", 5);
+
+    this.leftNumber = +splitValues[0];
+    this.operator = operatorToWord.get(splitValues[2]);
+    this.rightNumber = +splitValues[4];
+  }
+
+  onClickAnswer(choice: string) {
+    if(choice === this.mathGameDataToDisplay.correctAnswer) {
+      this.mathGameDataCorrect.push(this.mathGameDataToDisplay);
+      this.answerFeedback.displayAnswerFeedback(true);
+      this.answerFeedback.playSound(true);
+      this.loadNextPage();
+    } else {
+      this.answerFeedback.displayAnswerFeedback(false);
+    }
+  }
+
+  isAnsweredById(id: string) {
+    for (const answeredMath of this.mathGameDataCorrect) {
+      if(answeredMath.id === id) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   onImgLoad() {

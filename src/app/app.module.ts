@@ -20,6 +20,7 @@ import { MatButtonModule, MatCheckboxModule, MatButtonToggleModule } from '@angu
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MathComponent } from './games/Math/Math.component';
 import { MathIntroComponent } from './games/Math/math-intro/math-intro.component';
+import { MathCountingObjectsComponent } from './games/Math/math-counting-objects/math-counting-objects.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MathIntroComponent } from './games/Math/math-intro/math-intro.component
     LettersIntroComponent,
     LettersBarComponent,
     MathComponent,
-    MathIntroComponent
+    MathIntroComponent,
+    MathCountingObjectsComponent
   ],
   imports: [
     BrowserModule,
