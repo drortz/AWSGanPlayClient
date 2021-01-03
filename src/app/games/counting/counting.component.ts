@@ -88,10 +88,11 @@ export class CountingComponent implements OnInit {
     if(this.countingDataToDisplay.answer === selectedNumber) {
       // good asnwer
       this.countingDataCorrect.push(this.countingDataToDisplay);
-      this.answerFeedbackService.displayAnswerFeedback(true);
-      this.answerFeedbackService.playSound(true);
-      const source = timer(1500);
+      this.isAnswered = true;
+      const source = timer(1000);
           const abc = source.subscribe(val => {
+            this.answerFeedbackService.displayAnswerFeedback(true);
+            this.answerFeedbackService.playSound(true);
             if(!this.isItTheLastPic()) {
               this.loadNextPage();
             }

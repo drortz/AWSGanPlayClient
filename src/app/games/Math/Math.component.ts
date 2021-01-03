@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { MathService } from '../../services/http/math.service'
 import { LoadSpinnerService } from './../../services/load-spinner.service';
 import { AnswerFeedbackService } from './../../services/answer-feedback.service';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-Math',
@@ -18,6 +19,8 @@ export class MathComponent implements OnInit {
   gameToGameIDMap = new Map();
   LevelToLevelIDMap = new Map();
   gameEngToHeb = new Map();
+  operatorToWord = new Map();
+  wordToOperator = new Map();
   isLoaded = false;
 
   leftNumber: number = 0;
@@ -66,7 +69,13 @@ export class MathComponent implements OnInit {
       this.LevelToLevelIDMap.set('level-1', '1');
       this.LevelToLevelIDMap.set('level-2', '2');
       this.LevelToLevelIDMap.set('level-3', '3');
-  
+      this.operatorToWord.set('+', 'plus');
+      this.operatorToWord.set('-', 'minus');
+      this.operatorToWord.set('X', 'multiplication');
+      this.wordToOperator.set('plus','+');
+      this.wordToOperator.set('minus','-');
+      this.wordToOperator.set('multiplication','X');
+
       this.mathService.setgameType(this.gameToGameIDMap.get(this.game));
       this.mathService.setLevel(this.LevelToLevelIDMap.get(this.level));
       this.mathService.receiveMathGameData().subscribe(
@@ -109,23 +118,24 @@ export class MathComponent implements OnInit {
   }
 
   splitQuestion() {
-    let operatorToWord = new Map();
-    operatorToWord.set('+', 'plus');
-    operatorToWord.set('-', 'minus');
-    operatorToWord.set('X', 'multiplication');
-    let splitValues: string[] = this.mathGameDataToDisplay.mathQuestion.split("", 5);
+    let splitValues: string[] = this.mathGameDataToDisplay.mathQuestion.split(" ", 10);
 
     this.leftNumber = +splitValues[0];
-    this.operator = operatorToWord.get(splitValues[2]);
-    this.rightNumber = +splitValues[4];
+    this.operator = this.operatorToWord.get(splitValues[1]);
+    this.rightNumber = +splitValues[2];
   }
 
   onClickAnswer(choice: string) {
     if(choice === this.mathGameDataToDisplay.correctAnswer) {
       this.mathGameDataCorrect.push(this.mathGameDataToDisplay);
-      this.answerFeedback.displayAnswerFeedback(true);
-      this.answerFeedback.playSound(true);
-      this.loadNextPage();
+      this.isAnswered = true;
+      const source = timer(1000);
+      source.subscribe(val => {
+        this.answerFeedback.displayAnswerFeedback(true);
+        this.answerFeedback.playSound(true);
+        this.loadNextPage();
+      });
+
     } else {
       this.answerFeedback.displayAnswerFeedback(false);
     }

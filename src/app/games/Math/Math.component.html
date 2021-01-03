@@ -8,6 +8,7 @@
     </div>
     <div class="col-8">
         <em><p class="text-center h3" style="font-size: 5vw;">{{this.gameEngToHeb.get(this.game)}}</p></em>
+        <p class="text-center h3"> רמה {{this.LevelToLevelIDMap.get(this.level)}}</p>
     </div>
     <div class="col-2">
         <p class="text-right">
@@ -19,8 +20,12 @@
 </div>
 
 <div class="container mt-5">
-  <div class="row justify-content-center" dir='ltr' style="background-color: lightskyblue">
-    <h1>{{this.mathGameDataToDisplay?.mathQuestion}}</h1>
+  <div class="row justify-content-center" dir='ltr' style="background-color: rgb(168, 217, 248)">
+    <!-- <h1>{{this.mathGameDataToDisplay?.mathQuestion}}</h1> -->
+    <h1><b>{{this.leftNumber }}&nbsp;</b></h1>
+    <h1 style="color: red;"><b>{{this.wordToOperator.get(this.operator)}}&nbsp;</b></h1>
+    <h1><b>{{this.rightNumber}}&nbsp;</b></h1>
+    <h1 style="color: red;"><b> = </b></h1>
   </div>
 
   <!-- <app-math-counting-objects *ngIf="this.level === 'level-1' && this.game === 'addition-subtraction'"
@@ -28,6 +33,7 @@
   </app-math-counting-objects> -->
 
   <div [className]="isAnswered ? 'row text-center pt-3 pb-3 appear-as-disable' : 'row text-center pt-3 pb-3' " style="background-color: lightsteelblue;">
+    
     <div *ngFor="let choice of this.mathGameDataToDisplay?.multipleChoise" class = col>
       <!-- <button
               type="button" [className]="(choice === this.mathGameDataToDisplay.correctAnswer && this.isAnswered) ? 'btn btn-success btn-lg active' : 'btn btn-lg btn-info' " [disabled]="this.isAnswered" (click)="onClickAnswer(choice)">{{choice}}
