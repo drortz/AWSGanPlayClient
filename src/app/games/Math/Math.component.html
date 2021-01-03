@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<div class="container mt-5">
+<div *ngIf="isLoaded" class="container mt-5">
   <div class="row justify-content-center" dir='ltr' style="background-color: rgb(168, 217, 248)">
     <!-- <h1>{{this.mathGameDataToDisplay?.mathQuestion}}</h1> -->
     <h1><b>{{this.leftNumber }}&nbsp;</b></h1>

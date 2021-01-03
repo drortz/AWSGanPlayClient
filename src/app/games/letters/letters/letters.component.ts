@@ -118,10 +118,11 @@ export class LettersComponent implements OnInit {
 
     if(this.isCompletelyAnswered()) {
       this.lettersDataCorrect.push(this.lettersDataToDisplay);
-      this.answerFeedback.displayAnswerFeedback(true);
-      this.answerFeedback.playSound(true);
-      const source = timer(1500);
+      this.isAnswered = true;
+      const source = timer(1000);
           const abc = source.subscribe(val => {
+            this.answerFeedback.displayAnswerFeedback(true);
+            this.answerFeedback.playSound(true);
             if(!this.isItTheLastPic()) {
               this.loadNextPage();
             }
