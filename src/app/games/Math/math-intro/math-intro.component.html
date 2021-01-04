@@ -86,6 +86,15 @@
           <img src="../../../../assets/images/PlusMinus.png" class="card-img-top" style="background-color: bisque;">
           <div class="card-body" style="background-color: rgb(255, 251, 246);">
             <h3 class="card-title  text-center"><b>חיבור וחיסור</b></h3>
+            <h6 class="mt-2">בחרו רמה</h6>
+            <div class="text-center mt-2">
+              <mat-button-toggle-group #group="matButtonToggleGroup" name="level" value="/math/addition-subtraction/level-1/1">
+                <mat-button-toggle value="/math/addition-subtraction/level-1/1">קל</mat-button-toggle>
+                <mat-button-toggle value="/math/addition-subtraction/level-2/1">בינוני</mat-button-toggle>
+                <mat-button-toggle value="/math/addition-subtraction/level-3/1">קשה</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+            <hr>
             <ul class="list-group">
               <li class="list-group-item list-group-item-success">
                  <b>קל:</b> 
@@ -101,15 +110,6 @@
                 <br>
                  מספרים עד 1000</li>
             </ul>
-            <hr>
-            <h6 class="mt-2">בחרו רמה</h6>
-            <div class="text-center mt-2">
-              <mat-button-toggle-group #group="matButtonToggleGroup" name="level" value="/math/addition-subtraction/level-1/1">
-                <mat-button-toggle value="/math/addition-subtraction/level-1/1">קל</mat-button-toggle>
-                <mat-button-toggle value="/math/addition-subtraction/level-2/1">בינוני</mat-button-toggle>
-                <mat-button-toggle value="/math/addition-subtraction/level-3/1">קשה</mat-button-toggle>
-              </mat-button-toggle-group>
-            </div>
           </div>
           <div class="card-footer text-center">
             <!-- Path defined in router: {path: 'math/:game/:level/:id', component: MathComponent}, -->
@@ -122,6 +122,14 @@
           <img src="../../../../assets/images/multiplicationSign.png" class="card-img-top" style="background-color: bisque;">
           <div class="card-body" style="background-color: rgb(255, 251, 246);">
             <h3 class="card-title  text-center"><b>כפל</b></h3>
+            <h6 class="mt-2">בחרו רמה</h6>
+            <div class="text-center mt-2">
+              <mat-button-toggle-group #group2="matButtonToggleGroup" name="level2" value="/math/multiplication/level-1/1">
+                <mat-button-toggle value="/math/multiplication/level-1/1">קל</mat-button-toggle>
+                <mat-button-toggle value="/math/multiplication/level-2/1">קשה</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+            <hr>
             <ul class="list-group">
               <li class="list-group-item list-group-item-success">
                  <b>קל:</b> 
@@ -133,14 +141,6 @@
                 <br>
                  מספרים עד 100</li>
             </ul>
-            <hr>
-            <h6 class="mt-2">בחרו רמה</h6>
-            <div class="text-center mt-2">
-              <mat-button-toggle-group #group2="matButtonToggleGroup" name="level2" value="/math/multiplication/level-1/1">
-                <mat-button-toggle value="/math/multiplication/level-1/1">קל</mat-button-toggle>
-                <mat-button-toggle value="/math/multiplication/level-2/1">קשה</mat-button-toggle>
-              </mat-button-toggle-group>
-            </div>
           </div>
           <div class="card-footer text-center">
             <!-- Path defined in router: {path: 'math/:game/:level/:id', component: MathComponent}, -->
