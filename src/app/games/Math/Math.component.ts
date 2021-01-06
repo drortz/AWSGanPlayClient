@@ -9,7 +9,7 @@ import { timer } from 'rxjs';
 @Component({
   selector: 'app-Math',
   templateUrl: './Math.component.html',
-  styleUrls: ['./Math.component.css']
+  styleUrls: ['./Math.component.css'],
 })
 export class MathComponent implements OnInit {
 
@@ -22,6 +22,9 @@ export class MathComponent implements OnInit {
   operatorToWord = new Map();
   wordToOperator = new Map();
   isLoaded = false;
+  wrongAnswersCounter: number = 0;
+  CorrectAnswersCounter: number = 0;
+  selectedNumberOfQuestions: number = 0;
 
   leftNumber: number = 0;
   rightNumber: number = 0;
@@ -51,7 +54,13 @@ export class MathComponent implements OnInit {
     private loadSpinner: LoadSpinnerService,
     private answerFeedback: AnswerFeedbackService,
     private activeRoute: ActivatedRoute
-    ) { 
+    ) {
+      mathService.getNumberOfQuestionsObs().subscribe(
+        (amount: string) => {
+          this.selectedNumberOfQuestions = +amount;
+        }
+      );
+      
       activeRoute.params.subscribe(
         val => {
           this.game = val.game;
@@ -78,6 +87,7 @@ export class MathComponent implements OnInit {
 
       this.mathService.setgameType(this.gameToGameIDMap.get(this.game));
       this.mathService.setLevel(this.LevelToLevelIDMap.get(this.level));
+      this.mathService.setNumberOfQuestions(String(this.selectedNumberOfQuestions));
       this.mathService.receiveMathGameData().subscribe(
         (value: {mathQuestions: {mathQuestion: string, multipleChoise: string[], correctAnswer: string, id: string}[]}) => {
           this.mathGameData = value;
@@ -129,6 +139,7 @@ export class MathComponent implements OnInit {
     if(choice === this.mathGameDataToDisplay.correctAnswer) {
       this.mathGameDataCorrect.push(this.mathGameDataToDisplay);
       this.isAnswered = true;
+      this.CorrectAnswersCounter++;
       const source = timer(1000);
       source.subscribe(val => {
         this.answerFeedback.displayAnswerFeedback(true);
@@ -137,7 +148,14 @@ export class MathComponent implements OnInit {
       });
 
     } else {
-      this.answerFeedback.displayAnswerFeedback(false);
+      // this.answerFeedback.displayAnswerFeedback(false);
+      this.isAnswered = true;
+      this.wrongAnswersCounter++;
+      this.mathGameDataCorrect.push(this.mathGameDataToDisplay);
+      const source = timer(1500);
+      source.subscribe(val => {
+        this.loadNextPage();
+      });
     }
   }
 

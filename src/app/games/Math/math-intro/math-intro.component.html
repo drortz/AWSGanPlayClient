@@ -86,6 +86,7 @@
           <img src="../../../../assets/images/PlusMinus.png" class="card-img-top" style="background-color: bisque;">
           <div class="card-body" style="background-color: rgb(255, 251, 246);">
             <h3 class="card-title  text-center"><b>חיבור וחיסור</b></h3>
+            <hr>
             <h6 class="mt-2">בחרו רמה</h6>
             <div class="text-center mt-2">
               <mat-button-toggle-group #group="matButtonToggleGroup" name="level" value="/math/addition-subtraction/level-1/1">
@@ -94,22 +95,72 @@
                 <mat-button-toggle value="/math/addition-subtraction/level-3/1">קשה</mat-button-toggle>
               </mat-button-toggle-group>
             </div>
+            <!-- <h6 class="mt-2">מספר תרגילים</h6>
+
+            <mat-label>בחרו מספר תרגילים</mat-label> -->
             <hr>
-            <ul class="list-group">
-              <li class="list-group-item list-group-item-success">
-                 <b>קל:</b> 
-                 <br>
-                  מספרים עד 10
-                </li>
-              <li class="list-group-item list-group-item-warning">
-                <b>בינוני:</b>
-                <br>
-                 מספרים עד 100</li>
-              <li class="list-group-item list-group-item-danger">
-                <b>קשה:</b>
-                <br>
-                 מספרים עד 1000</li>
-            </ul>
+            <h6>20 תרגילים, לשינוי בחרו מטה</h6>
+            <mat-form-field appearance="fill" style="color: white; margin-top: 10px;">
+              <mat-label>בחרו מספר תרגילים</mat-label>
+              <mat-select  [(value)]="this.selectedQuestionAmountValue">
+                <mat-option #matOption1 (click)="onAmountSelect(matOption1.value)" [value]="10">
+                  10
+                </mat-option>
+                <mat-option #matOption2 (click)="onAmountSelect(matOption2.value)" [value]="15">
+                  15
+                </mat-option>
+                <mat-option #matOption3 (click)="onAmountSelect(matOption3.value)" [value]="20">
+                  20
+                </mat-option>
+                <mat-option #matOption4 (click)="onAmountSelect(matOption4.value)" [value]="25">
+                  25
+                </mat-option>
+                <mat-option #matOption5 (click)="onAmountSelect(matOption5.value)" [value]="30">
+                  30
+                </mat-option>
+                <mat-option #matOption6 (click)="onAmountSelect(matOption6.value)" [value]="35">
+                  35
+                </mat-option>
+                <mat-option #matOption7 (click)="onAmountSelect(matOption7.value)" [value]="40">
+                  40
+                </mat-option>
+                <mat-option #matOption8 (click)="onAmountSelect(matOption8.value)" [value]="45">
+                  45
+                </mat-option>
+                <mat-option #matOption9 (click)="onAmountSelect(matOption9.value)" [value]="50">
+                  50
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <hr>
+
+            <mat-expansion-panel (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+              <mat-panel-title>
+                הסבר על רמות הקושי
+              </mat-panel-title>
+              </mat-expansion-panel-header>
+              
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-success">
+                   <b>קל:</b> 
+                   <br>
+                    מספרים עד 10
+                  </li>
+                <li class="list-group-item list-group-item-warning">
+                  <b>בינוני:</b>
+                  <br>
+                   מספרים עד 100</li>
+                <li class="list-group-item list-group-item-danger">
+                  <b>קשה:</b>
+                  <br>
+                   מספרים עד 1000</li>
+              </ul>
+
+            </mat-expansion-panel>
+
           </div>
           <div class="card-footer text-center">
             <!-- Path defined in router: {path: 'math/:game/:level/:id', component: MathComponent}, -->
@@ -130,17 +181,64 @@
               </mat-button-toggle-group>
             </div>
             <hr>
-            <ul class="list-group">
-              <li class="list-group-item list-group-item-success">
-                 <b>קל:</b> 
-                 <br>
-                  מספרים עד 10
-                </li>
-              <li class="list-group-item list-group-item-danger">
-                <b>קשה:</b>
-                <br>
-                 מספרים עד 100</li>
-            </ul>
+            <h6>20 תרגילים, לשינוי בחרו מטה</h6>
+            <mat-form-field appearance="fill" style="color: white; margin-top: 10px;">
+              <mat-label>בחרו מספר תרגילים</mat-label>
+              <mat-select>
+                <mat-option #matOption10 (click)="onAmountSelect(matOption10.value)" [value]="10">
+                  10
+                </mat-option>
+                <mat-option #matOption20 (click)="onAmountSelect(matOption20.value)" [value]="15">
+                  15
+                </mat-option>
+                <mat-option #matOption30 (click)="onAmountSelect(matOption30.value)" [value]="20">
+                  20
+                </mat-option>
+                <mat-option #matOption40 (click)="onAmountSelect(matOption40.value)" [value]="25">
+                  25
+                </mat-option>
+                <mat-option #matOption50 (click)="onAmountSelect(matOption50.value)" [value]="30">
+                  30
+                </mat-option>
+                <mat-option #matOption60 (click)="onAmountSelect(matOption60.value)" [value]="35">
+                  35
+                </mat-option>
+                <mat-option #matOption70 (click)="onAmountSelect(matOption70.value)" [value]="40">
+                  40
+                </mat-option>
+                <mat-option #matOption80 (click)="onAmountSelect(matOption80.value)" [value]="45">
+                  45
+                </mat-option>
+                <mat-option #matOption90 (click)="onAmountSelect(matOption90.value)" [value]="50">
+                  50
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <hr>
+
+            <mat-expansion-panel (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+              <mat-panel-title>
+                הסבר על רמות הקושי
+              </mat-panel-title>
+              </mat-expansion-panel-header>
+              
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-success">
+                   <b>קל:</b> 
+                   <br>
+                    מספרים עד 10
+                  </li>
+                <li class="list-group-item list-group-item-danger">
+                  <b>קשה:</b>
+                  <br>
+                   מספרים עד 100</li>
+              </ul>
+
+            </mat-expansion-panel>
+            
           </div>
           <div class="card-footer text-center">
             <!-- Path defined in router: {path: 'math/:game/:level/:id', component: MathComponent}, -->

@@ -16,7 +16,9 @@ import { LettersComponent } from './games/letters/letters/letters.component';
 import { LettersIntroComponent } from './games/letters/letters-intro/letters-intro.component';
 import { LettersBarComponent } from './games/letters/letters-bar/letters-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatButtonToggleModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatButtonToggleModule, 
+  MatIconModule, MatBadgeModule, MatSliderModule, MatFormFieldModule, MatSelectModule,
+MatPaginatorModule, MatExpansionModule } from '@angular/material';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MathComponent } from './games/Math/Math.component';
 import { MathIntroComponent } from './games/Math/math-intro/math-intro.component';
@@ -47,6 +49,13 @@ import { MathCountingObjectsComponent } from './games/Math/math-counting-objects
     MatButtonModule,
     MatCheckboxModule,
     MatButtonToggleModule,
+    MatIconModule,
+    MatBadgeModule,
+    MatSliderModule,
+    MatPaginatorModule,
+    MatExpansionModule,
+    MatSelectModule,
+    MatFormFieldModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

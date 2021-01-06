@@ -19,15 +19,47 @@
   </div>
 </div>
 
-<div *ngIf="isLoaded" class="container mt-5">
-  <div class="row justify-content-center" dir='ltr' style="background-color: rgb(168, 217, 248)">
-    <!-- <h1>{{this.mathGameDataToDisplay?.mathQuestion}}</h1> -->
-    <h1><b>{{this.leftNumber }}&nbsp;</b></h1>
-    <h1 style="color: red;"><b>{{this.wordToOperator.get(this.operator)}}&nbsp;</b></h1>
-    <h1><b>{{this.rightNumber}}&nbsp;</b></h1>
-    <h1 style="color: red;"><b> = </b></h1>
-  </div>
+<h3 class="text-center">שאלה {{this.mathGameDataToDisplay?.id}} מתוך {{this.mathGameData?.mathQuestions?.length}}</h3>
 
+<div *ngIf="isLoaded" class="container mt-5">
+  <div class="row">
+    <div class="col-6">
+      <div class="row justify-content-center" dir='ltr' style="padding-bottom: 200px; background-color: rgb(183, 243, 213); border-color: black;   border-style: outset;">
+        <!-- <h1>{{this.mathGameDataToDisplay?.mathQuestion}}</h1> -->
+        <h1><b>{{this.leftNumber }}&nbsp;</b></h1>
+        <h1 style="color: red;"><b>{{this.wordToOperator.get(this.operator)}}&nbsp;</b></h1>
+        <h1><b>{{this.rightNumber}}&nbsp;</b></h1>
+        <h1 style="color: red;"><b> = </b></h1>
+      </div>
+    </div>
+    <div class="col-6 pt-3 pb-3" style="background-color: rgb(168, 217, 248); border-color: black;   border-style: outset;">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-success">
+          <div class="row">
+            <div class="col-4">
+              <h1>{{this.CorrectAnswersCounter}}</h1>
+            </div>
+            <div class="col-8">
+              תשובות נכונות
+              <mat-icon matBadgeColor="warn">done_outline</mat-icon>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item list-group-item-danger">
+          <div class="row">
+            <div class="col-4">
+              <h1>{{this.wrongAnswersCounter}}</h1>
+            </div>
+            <div class="col-8">
+              תשובות שגויות
+              <mat-icon matBadgeColor="warn">highlight_off</mat-icon>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
   <!-- <app-math-counting-objects *ngIf="this.level === 'level-1' && this.game === 'addition-subtraction'"
       [leftNumber]="this.leftNumber" [rightNumbet]="this.rightNumber" [operator]="this.operator">
   </app-math-counting-objects> -->
